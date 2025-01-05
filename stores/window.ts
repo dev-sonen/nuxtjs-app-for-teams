@@ -9,10 +9,18 @@ export const useWindowSize = defineStore( 'size' , {
     },
     actions: {
         getWindowX() {
-            window.addEventListener( 'resize' , () => this.sizex = window.innerWidth )
+            if ( this.sizex === 0 ) {
+                this.sizex = window.innerWidth
+            } else {
+                window.addEventListener( 'resize' , () => this.sizex = window.innerWidth )
+            }
         },
         getWindowY() {
-            window.addEventListener( 'resize' , () => this.sizey = window.innerHeight )
+            if ( this.sizey === 0 ) {
+                this.sizey = window.innerHeight
+            } else {
+                window.addEventListener( 'resize' , () => this.sizey = window.innerHeight )
+            }
         }
     }
 } )
